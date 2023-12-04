@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMSCodigoFase05 Console App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #loginResultMessage,
+        #serviceResult,
+        #registerServiceResult {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bem-Vindo à plataforma de Serviços de Manutenção</h2>
+
+        <form id="loginForm">
+            <label for="username">Insira o seu username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Insira a sua password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="performLogin()">Login</button>
+        </form>
+
+        <!-- Login result message will be displayed here -->
+        <div id="loginResultMessage" class="result"></div>
+
+        <h3>Serviços disponíveis:</h3>
+        <p>1 - Jardinagem</p>
+        <p>2 - Pintura</p>
+        <p>3 - Limpeza</p>
+
+        <form id="serviceForm">
+            <label for="serviceChoice">Qual serviço deseja requisitar?</label>
+            <input type="number" id="serviceChoice" name="serviceChoice" required>
+
+            <button type="button" onclick="chooseService()">Escolher Serviço</button>
+        </form>
+
+        <!-- Service result message will be displayed here -->
+        <div id="serviceResult" class="result"></div>
+
+        <h3>Registo de serviços:</h3>
+
+        <form id="registerServiceForm">
+            <label for="serviceName">Qual o serviço que pretende registar?</label>
+            <input type="text" id="serviceName" name="serviceName" required>
+
+            <button type="button" onclick="registerService()">Registar Serviço</button>
+        </form>
+
+        <div id="registerServiceResult" class="result"></div>
+    </div>
+
+    <script>
+        function performLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var loginResultMessage = document.getElementById("loginResultMessage");
+
+            // Example: Replace this with actual server-side authentication logic
+            if (username === "teste" && password === "123teste") {
+                loginResultMessage.innerHTML = "Login realizado com sucesso!";
+            } else {
+                loginResultMessage.innerHTML = "Login falhou. Credenciais incorretas.";
+            }
+        }
+
+        function chooseService() {
+            var serviceChoice = document.getElementById("serviceChoice").value;
+            var serviceResultMessage = document.getElementById("serviceResult");
+
+            // Ensure the value is treated as a number
+            serviceChoice = parseInt(serviceChoice, 10);
+
+            // Example: Replace this with actual logic to check if the service choice is valid
+            if (isValidService(serviceChoice)) {
+                serviceResultMessage.innerHTML = "Serviço escolhido com sucesso!";
+            } else {
+                serviceResultMessage.innerHTML = "Serviço não existe.";
+            }
+        }
+
+        function registerService() {
+            var serviceName = document.getElementById("serviceName").value;
+            var registerServiceResult = document.getElementById("registerServiceResult");
+
+            // Example: Replace this with actual logic to register the service
+            // This could involve sending data to a server, updating a database, etc.
+
+            registerServiceResult.innerHTML = "Serviço " + serviceName + " registado com sucesso.";
+        }
+
+        function isValidService(serviceChoice) {
+            // Example: Replace this with actual logic to check if the service choice is valid
+            // You can check against a predefined list of valid service numbers
+            return serviceChoice >= 1 && serviceChoice <= 3;
+        }
+		
+		
+    </script>
+</body>
+</html>
