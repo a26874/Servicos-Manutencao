@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #loginSection, #services, #paymentSection, #result {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input, select, button {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginSection">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <button type="button" onclick="performLogin()">Login</button>
+        </form>
+    </div>
+
+    <div id="services" style="display:none;">
+        <h2>Services to Pay</h2>
+        <p>1- Jardinagem: $250.50</p>
+        <p>2- Pintura: $399.99</p>
+    </div>
+
+    <div id="paymentSection" style="display:none;">
+        <h2>Payment Form</h2>
+        <form id="paymentForm" onsubmit="processPayment(event)">
+            <label for="choice">Select Service:</label>
+            <select id="choice" name="choice" required>
+                <option value="1">Jardinagem - $250.50</option>
+                <option value="2">Pintura - $399.99</option>
+            </select><br>
+
+            <label for="paymentType">Payment Type:</label>
+            <select id="paymentType" name="paymentType" required>
+                <option value="MBWAY">MBWAY</option>
+                <option value="MULTIBANCO">MULTIBANCO</option>
+                <option value="TRANSFBANCARIA">TRANSFBANCARIA</option>
+                <option value="PAYPAL">PAYPAL</option>
+            </select><br>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" step="0.01" required><br>
+
+            <button type="submit" id="processPaymentButton" disabled>Process Payment</button>
+        </form>
+    </div>
+
+    <div id="result" style="display:none;">
+        <h2>Payment Result</h2>
+        <p id="resultMessage"></p>
+    </div>
+
+    <script>
+        var isLoggedIn = false;
+
+        function performLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Your login logic goes here
+            // Example login check
+            if (username === 'teste' && password === '123teste') {
+                isLoggedIn = true;
+                console.log('Login successful.');
+
+                // Show payment section
+                document.getElementById('services').style.display = 'block';
+                document.getElementById('paymentSection').style.display = 'block';
+            } else {
+                isLoggedIn = false;
+                console.log('Username or password incorrect.');
+            }
+        }
+function processPayment(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    if (!isLoggedIn) {
+        console.log('Please log in first.');
+        return;
+    }
+
+    // Your payment processing logic goes here
+
+    var choice = document.getElementById('choice').value;
+    var paymentType = document.getElementById('paymentType').value;
+    var amount = document.getElementById('amount').value;
+    var expectedAmount;
+
+    if (choice === '1') {
+        expectedAmount = 250.50;
+    } else if (choice === '2') {
+        expectedAmount = 399.99;
+    }
+
+    if (parseFloat(amount) === expectedAmount) { // Use parseFloat to convert amount to a number
+        var resultMessage = document.getElementById('resultMessage');
+        resultMessage.textContent = `Payment successful for service ${choice} (${paymentType}, $${amount})`;
+
+        // Show result section
+        document.getElementById('result').style.display = 'block';
+    } else {
+        var resultMessage = document.getElementById('resultMessage');
+        resultMessage.textContent = `Invalid payment for service ${choice} (${paymentType}, $${amount})`;
+    }
+}
+
+// Enable or disable the Process Payment button based on form validity
+document.getElementById('paymentForm').addEventListener('input', function () {
+    var isFormValid = document.getElementById('paymentForm').checkValidity();
+    document.getElementById('processPaymentButton').disabled = !isFormValid;
+});
+
+    </script>
+</body>
+</html>

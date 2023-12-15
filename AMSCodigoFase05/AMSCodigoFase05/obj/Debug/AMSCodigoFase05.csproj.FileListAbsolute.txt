@@ -1,0 +1,7 @@
+C:\Users\marco\source\repos\repo_M07\AMSCodigoFase05\AMSCodigoFase05\bin\Debug\AMSCodigoFase05.exe.config
+C:\Users\marco\source\repos\repo_M07\AMSCodigoFase05\AMSCodigoFase05\bin\Debug\AMSCodigoFase05.exe
+C:\Users\marco\source\repos\repo_M07\AMSCodigoFase05\AMSCodigoFase05\bin\Debug\AMSCodigoFase05.pdb
+C:\Users\marco\source\repos\repo_M07\AMSCodigoFase05\AMSCodigoFase05\obj\Debug\AMSCodigoFase05.csproj.AssemblyReference.cache
+C:\Users\marco\source\repos\repo_M07\AMSCodigoFase05\AMSCodigoFase05\obj\Debug\AMSCodigoFase05.csproj.CoreCompileInputs.cache
+C:\Users\marco\source\repos\repo_M07\AMSCodigoFase05\AMSCodigoFase05\obj\Debug\AMSCodigoFase05.exe
+C:\Users\marco\source\repos\repo_M07\AMSCodigoFase05\AMSCodigoFase05\obj\Debug\AMSCodigoFase05.pdb
