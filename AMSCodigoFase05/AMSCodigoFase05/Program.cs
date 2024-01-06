@@ -114,16 +114,59 @@ namespace AMSCodigoFase05
                         Console.WriteLine("Metodo pagamento ou montante inválidos.");
                     break;
             }
+            string idFatura= string.Empty;
             if (pagamentoValido)
             {
-                string fatura = GerarFatura();
-
+                idFatura = GerarFatura();
                 if (nomeServico == "Jardinagem")
-                    Console.WriteLine("Nome do cliente:{0} Serviço:{1} IDFatura:{2}", nomeCliente, nomeServico, fatura);
+                    Console.WriteLine("Nome do cliente:{0} Serviço:{1} IDFatura:{2}", nomeCliente, nomeServico, idFatura);
                 else if (nomeServico == "Pintura")
-                    Console.WriteLine("Nome do cliente:{0} Serviço:{1} IDFatura:{2}", nomeCliente, nomeServico, fatura);
+                    Console.WriteLine("Nome do cliente:{0} Serviço:{1} IDFatura:{2}", nomeCliente, nomeServico, idFatura);
             }
 
+            PedidoReembolso(idFatura,"Má execução de pintura");
+
+            bool PedidoReembolso(string idFaturaAux, string motivoReembolso)
+            {
+                if (idFaturaAux == idFatura)
+                {
+                    EnviarPedido();
+                    return true;
+                }
+
+                return false;
+            }
+            List<string> servicos= new List<string>();
+            servicos.Add("Jardinagem");
+            servicos.Add("Pintura");
+            servicos.Add("Limpeza");
+            Dictionary<bool, List<string>> listaServicos = new Dictionary<bool, List<string>>();
+
+
+            listaServicos.Add(false, servicos);
+            listaServicos.Add(true, new List<string>());
+            if (AprovaServico("Jardinagem"))
+            {
+                Console.WriteLine("Aprovado com sucesso.");
+            }
+            else
+                Console.WriteLine("Não aprovado.");
+
+            bool AprovaServico(string nomeServicoAux)
+            {
+                if (listaServicos[false].Contains(nomeServicoAux))
+                {
+                    listaServicos[false].Remove(nomeServicoAux);
+                    listaServicos[true].Add(nomeServicoAux);
+                    return true;
+                }
+                return false;
+            }
+
+            void EnviarPedido()
+            {
+                
+            }
 
             string GerarFatura()
             {

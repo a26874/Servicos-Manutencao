@@ -1,0 +1,10 @@
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\bin\Debug\ProjetoAAD.exe.config
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\bin\Debug\ProjetoAAD.exe
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\bin\Debug\ProjetoAAD.pdb
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\obj\Debug\ProjetoAAD.csproj.AssemblyReference.cache
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\obj\Debug\ProjetoAAD.Interface.resources
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\obj\Debug\ProjetoAAD.Properties.Resources.resources
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\obj\Debug\ProjetoAAD.csproj.GenerateResource.cache
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\obj\Debug\ProjetoAAD.csproj.CoreCompileInputs.cache
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\obj\Debug\ProjetoAAD.exe
+C:\Users\marco\source\repos\repo_M07\ProjetoAAD\ProjetoAAD\obj\Debug\ProjetoAAD.pdb

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovação de Serviço</title>
+    
+    <!-- Adicione esses links ao cabeçalho para incluir a biblioteca SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input {
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Aprovação de Serviço</h2>
+    <label for="servicoInput">Digite o serviço:</label>
+    <input type="text" id="servicoInput">
+    <button onclick="verificarServico()">Verificar</button>
+    <div id="result"></div>
+
+    <script>
+        var servicos = ["Jardinagem", "Pintura", "Limpeza"];
+        var listaServicos = {
+            false: [...servicos],
+            true: []
+        };
+
+        function verificarServico() {
+            var servicoInput = document.getElementById('servicoInput').value;
+            var resultDiv = document.getElementById('result');
+
+            if (AprovaServico(servicoInput)) {
+                resultDiv.innerHTML = "Aprovado com sucesso.";
+                showSwal("Serviço Aprovado!", "success");
+            } else {
+                resultDiv.innerHTML = "Não aprovado.";
+                showSwal("Serviço Não Aprovado.", "error");
+            }
+
+            // Exibir o estado atual das listas após cada clique no botão "Verificar"
+            console.log("Lista de Serviços Pendentes:", listaServicos[false]);
+            console.log("Lista de Serviços Aprovados:", listaServicos[true]);
+        }
+
+        function AprovaServico(nomeServicoAux) {
+            if (listaServicos[false].includes(nomeServicoAux)) {
+                listaServicos[false].splice(listaServicos[false].indexOf(nomeServicoAux), 1);
+                listaServicos[true].push(nomeServicoAux);
+                return true;
+            }
+            return false;
+        }
+
+        function showSwal(message, icon) {
+            Swal.fire({
+                text: message,
+                icon: icon,
+                confirmButtonText: 'OK'
+            });
+        }
+    </script>
+</body>
+</html>
